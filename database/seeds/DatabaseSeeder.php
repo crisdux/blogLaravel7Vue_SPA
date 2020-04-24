@@ -1,7 +1,10 @@
 <?php
 
 use Illuminate\Database\Seeder;
-
+use Illuminate\Support\Facades\Hash;
+use App\User;
+use App\Article;
+use App\Comment;
 class DatabaseSeeder extends Seeder
 {
     /**
@@ -11,6 +14,12 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // $this->call(UserSeeder::class);
+        factory(User::class)->create([
+            'email' => "crisfer.4217@gmail.com",
+            'password' => Hash::make('test')
+        ]);
+
+        factory(Article::class)->times(20)->create();
+        factory(Comment::class)->times(10)->create();
     }
 }
